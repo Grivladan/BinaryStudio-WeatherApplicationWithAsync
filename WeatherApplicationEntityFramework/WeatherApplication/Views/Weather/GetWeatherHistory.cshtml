@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "GetWeatherHistory";
+    List<WeatherApplication.Models.ArchieveWeatherData> l = (List<WeatherApplication.Models.ArchieveWeatherData>)ViewBag.records;
+}
+
+<h2>Weather history</h2>
+
+@for (int i = 0; i < l.Count; i++)
+{
+    if (i == 0)
+    {
+        <p><hr></p>
+        <h3>Weather forecast for @l[i].City</h3><br>
+    }
+    <span>@l[i].Data</span><br>
+    <span>Day temperature:</span>@l[i].Day<span>&deg</span><br>
+    <span>Night temperature:</span>@l[i].Night<span>&deg</span><br>
+    @l[i].Description;<br><br>
+    if (i + 1 < l.Count && (l[i].City != l[i + 1].City))
+    {
+        <p><hr></p>
+        <h3>Weather forecast for @l[i + 1].City</h3><br>
+    }
+}
+

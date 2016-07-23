@@ -1,0 +1,21 @@
+﻿@model WeatherApplication.Models.WeatherData.RootObject
+
+@{
+    ViewBag.Title = "GetWeather";
+    int days = (int)ViewBag.days;
+}
+
+<h2>Weather forecast for @Model.city.name</h2>
+
+@for (int i = 0; i < days;i++ )
+{
+    var data = DateTime.Now;
+    data=data.AddDays(i);
+    <span>@data.Date.ToString("dd/MM/yyyy")</span><br>
+    <span>Day temperature:</span>@Model.list[i].temp.DayInCelsius()<span>&deg</span><br>
+    <span>Night temperature:</span>@Model.list[i].temp.NightInCelsius()<span>&deg</span><br>
+    @Model.list[i].weather[0].description;<br>
+    <p><hr></p>
+}
+
+

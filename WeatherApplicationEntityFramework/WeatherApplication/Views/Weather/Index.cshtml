@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+<form action="Weather/GetWeatherAsync" method="post">
+    <h2>Current weather in your city</h2>
+    <input type="radio" name="term" value="1" checked> Today weather forecast<br>
+    <input type="radio" name="term" value="3"> 3 days weather forecast<br>
+    <input type="radio" name="term" value="7"> Week weather forecast<br>
+    <input list="cities" name="city" required placeholder="City" />
+    <datalist id="cities">
+        <option value="Kyiv">
+        <option value="Lviv">
+        <option value="Kharkiv">
+        <option value="Dnipropetrovsk">
+        <option value="Odesa">
+    </datalist>
+    <input type="submit" value="Submit" /> <br>
+    @Html.ActionLink("Get weather history", "GetWeatherHistory", "Weather")
+</form>
+
+
